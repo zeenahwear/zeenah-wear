@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login / Register - Modern Fashion Store</title>
+<style>
+  body {font-family: Arial, sans-serif; background: #f2f2f2; display: flex; justify-content: center; align-items: center; height: 100vh;}
+  .container {background: white; padding: 20px 30px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); width: 300px;}
+  h2 {text-align: center; margin-bottom: 20px;}
+  input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;
+  }
+  button {
+    width: 100%; padding: 10px; background: #222; color: white; border: none; border-radius: 5px; cursor: pointer;
+  }
+  .toggle {text-align: center; margin-top: 10px; cursor: pointer; color: #0066cc;}
+</style>
+</head>
+<body>
+
+<div class="container" id="login-form">
+  <h2>Login</h2>
+  <input type="email" id="login-email" placeholder="Email" required />
+  <input type="password" id="login-password" placeholder="Password" required />
+  <button onclick="login()">Login</button>
+  <p class="toggle" onclick="toggleForms()">Don't have an account? Register</p>
+</div>
+
+<div class="container" id="register-form" style="display:none;">
+  <h2>Register</h2>
+  <input type="text" id="register-name" placeholder="Full Name" required />
+  <input type="email" id="register-email" placeholder="Email" required />
+  <input type="password" id="register-password" placeholder="Password" required />
+  <button onclick="register()">Register</button>
+  <p class="toggle" onclick="toggleForms()">Already have an account? Login</p>
+</div>
+
+<script>
+  function toggleForms() {
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    if (loginForm.style.display === "none") {
+      loginForm.style.display = "block";
+      registerForm.style.display = "none";
+    } else {
+      loginForm.style.display = "none";
+      registerForm.style.display = "block";
+    }
+  }
+
+  function login() {
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    if (!email || !password) {
+      alert('Please fill in both fields');
+      return;
+    }
+    alert('Logged in as ' + email);
+  }
+
+  function register() {
+    const name = document.getElementById('register-name').value;
+    const email = document.getElementById('register-email').value;
+    const password = document.getElementById('register-password').value;
+    if (!name || !email || !password) {
+      alert('Please fill in all fields');
+      return;
+    }
+    alert('Registered user: ' + name);
+    toggleForms();
+  }
+</script>
+
+</body>
+</html>
